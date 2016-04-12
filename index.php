@@ -1,4 +1,4 @@
-?php
+<?php
     // Script zur Umformatierung der mongolab-Nighscout-Daten, damit diese von Garmin IQ weiterverwendet werden können.
     // Andreas May, Hamburg, www.laufen-mit-diabetes.de
  
