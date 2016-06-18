@@ -4,9 +4,11 @@
  
 	// Mongolab-URL mit der übertragenen Api ergänzen
     $_datenbank = trim($_GET[database]);
+    $_collection = trim($_GET[collection]);
     if($_datenbank == "") { $_datenbank = "nightscout"; }
-    $_url = "https://api.mongolab.com/api/1/databases/".$_datenbank."/collections/entries?l=1&s={%27date%27:-1}&f={%27_id%27:0,%20%27sgv%27:1,%20%27direction%27:1,%27date%27:1}&apiKey=".trim($_GET["api"]);
- 
+    if($_collection == "") { $_collection = "entries"; }
+    $_url = "https://api.mongolab.com/api/1/databases/".$_datenbank."/collections/".$_collection."?l=1&s={%27date%27:-1}&f={%27_id%27:0,%20%27sgv%27:1,%20%27direction%27:1,%27date%27:1}&apiKey=".trim($_GET["api"]);
+  
     $_lang = $_GET["sprache"];
  
        // Testfunktion
@@ -53,6 +55,6 @@
 	// json-Ausgabe erstellen und ausgeben
 	$_ausgabe = '{ "wert" : ' . $_blutzucker . ', "verzoegerung" : "vor ' . $_minutenverz . '", "pfeil" : "' . $_pfeil . '" }'; 
     }
-	echo $_ausgabe;
+	if ($_blutzucker) { echo $_ausgabe; }
  
 ?>
